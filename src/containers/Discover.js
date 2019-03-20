@@ -11,15 +11,15 @@ class Discover extends Component {
     super(props)
     this.state = {
       column1: {
-        tag: '',
+        tag: 'sunflowers',
         image: ''
       },
       column2: {
-        tag: '',
+        tag: 'sunflowers',
         image: ''
       },
       column3: {
-        tag: '',
+        tag: 'sunflowers',
         image: ''
       }
     }
@@ -45,20 +45,12 @@ class Discover extends Component {
     .catch((error) => {console.log(error)})
   }
   componentDidMount() {
-    // axios.get('https://collectionapi.metmuseum.org/public/collection/v1/search?q=sunflowers')
-    // .then((response) => {
-    //   console.log(response)
-    //   let objectID = response.data.objectIDs[0]
-    //   axios.get('https://collectionapi.metmuseum.org/public/collection/v1/objects/' + objectID)
-    //   .then((response) => {
-    //     console.log(response)
-    //   })
-    //   .catch((error) => {console.log(error)})
-    // })
-    // .catch((error) => {console.log(error)})
+    Object.entries(this.state).forEach((column) => {
+      this.getImage(column[0],column[1].tag)
+    })
   }
   updateData = (column, tag) => {
-    let image = this.getImage(column, tag)
+    this.getImage(column, tag)
     console.log(this.state)
   }
   render() {
