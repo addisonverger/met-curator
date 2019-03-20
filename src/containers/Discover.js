@@ -10,7 +10,18 @@ class Discover extends Component {
   constructor(props) {
     super(props)
     this.state = {
-
+      column1: {
+        tag: '',
+        image: ''
+      },
+      column2: {
+        tag: '',
+        image: ''
+      },
+      column3: {
+        tag: '',
+        image: ''
+      }
     }
   }
   componentDidMount() {
