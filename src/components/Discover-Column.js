@@ -14,6 +14,7 @@ class DiscoverColumn extends Component {
     this.setState({
       tagValue: event.target.value
     })
+    this.props.updateData(this.props.column, event.target.value)
   }
   render() {
     return (
@@ -30,7 +31,7 @@ class DiscoverColumn extends Component {
           </Form.Control>
         </Form.Field>
         <Form.Field>
-          <Image src='https://storage.googleapis.com/indie-hackers.appspot.com/product-avatars/quick-and-simple-image-placeholders/bcohuFwnmPgIu4aM56YZudq12m02'
+          <Image src={this.props.image}
                 size='1by1' />
         </Form.Field>
         <Form.Field>

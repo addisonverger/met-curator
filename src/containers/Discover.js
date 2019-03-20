@@ -24,31 +24,62 @@ class Discover extends Component {
       }
     }
   }
-  componentDidMount() {
-    axios.get('https://collectionapi.metmuseum.org/public/collection/v1/search?q=sunflowers')
+  getImage(column, tag) {
+    axios.get('https://collectionapi.metmuseum.org/public/collection/v1/search?q=' + tag)
     .then((response) => {
       console.log(response)
       let objectID = response.data.objectIDs[0]
       axios.get('https://collectionapi.metmuseum.org/public/collection/v1/objects/' + objectID)
       .then((response) => {
-        console.log(response)
+        console.log(response.data.primaryImage)
+        let image = response.data.primaryImage
+        this.setState({
+          [column]: {
+            tag: tag,
+            image: image
+          }
+        })
       })
       .catch((error) => {console.log(error)})
     })
     .catch((error) => {console.log(error)})
   }
+  componentDidMount() {
+    // axios.get('https://collectionapi.metmuseum.org/public/collection/v1/search?q=sunflowers')
+    // .then((response) => {
+    //   console.log(response)
+    //   let objectID = response.data.objectIDs[0]
+    //   axios.get('https://collectionapi.metmuseum.org/public/collection/v1/objects/' + objectID)
+    //   .then((response) => {
+    //     console.log(response)
+    //   })
+    //   .catch((error) => {console.log(error)})
+    // })
+    // .catch((error) => {console.log(error)})
+  }
+  updateData = (column, tag) => {
+    let image = this.getImage(column, tag)
+    console.log(this.state)
+  }
   render() {
+    console.log(this.state)
     return (
       <Section>
         <Columns>
           <Columns.Column>
-            <DiscoverColumn />
+            <DiscoverColumn column={'column1'}
+                            image={this.state.column1.image}
+                            updateData={this.updateData}/>
           </Columns.Column>
           <Columns.Column>
-            <DiscoverColumn />
+            <DiscoverColumn column={'column2'}
+                            image={this.state.column2.image}
+                            updateData={this.updateData}/>
           </Columns.Column>
           <Columns.Column>
-            <DiscoverColumn />
+            <DiscoverColumn column={'column3'}
+                            image={this.state.column3.image}
+                            updateData={this.updateData}/>
           </Columns.Column>
         </Columns>
       </Section>
