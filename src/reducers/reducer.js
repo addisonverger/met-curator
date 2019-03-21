@@ -1,5 +1,9 @@
 const initialState = {
+  
+}
 
+function deepCopy(x) {
+  return JSON.parse(JSON.stringify(x))
 }
 
 const reducer = (state = initialState, action) => {

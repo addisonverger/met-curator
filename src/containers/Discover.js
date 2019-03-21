@@ -24,14 +24,12 @@ class Discover extends Component {
       }
     }
   }
-  getImage(column, tag) {
+  getImage(column, tag, index) {
     axios.get('https://collectionapi.metmuseum.org/public/collection/v1/search?q=' + tag)
     .then((response) => {
-      console.log(response)
-      let objectID = response.data.objectIDs[0]
+      let objectID = response.data.objectIDs[index]
       axios.get('https://collectionapi.metmuseum.org/public/collection/v1/objects/' + objectID)
       .then((response) => {
-        console.log(response.data.primaryImage)
         let image = response.data.primaryImage
         this.setState({
           [column]: {
@@ -46,12 +44,11 @@ class Discover extends Component {
   }
   componentDidMount() {
     Object.entries(this.state).forEach((column) => {
-      this.getImage(column[0],column[1].tag)
+      this.getImage(column[0], column[1].tag, 0)
     })
   }
-  updateData = (column, tag) => {
-    this.getImage(column, tag)
-    console.log(this.state)
+  updateData = (column, tag, index) => {
+    this.getImage(column, tag, index)
   }
   render() {
     console.log(this.state)
