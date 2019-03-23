@@ -56,7 +56,6 @@ class Discover extends Component {
     this.getImage(column, tag, index)
   }
   render() {
-    console.log(this.state)
     return (
       <Section>
         <Columns>

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import MuuriGrid from 'react-muuri'
 
-import { Section } from 'react-bulma-components/full'
+import { Section, Image } from 'react-bulma-components/full'
 
 class MyGallery extends Component {
   constructor(props) {
@@ -28,16 +28,16 @@ class MyGallery extends Component {
       <Section>
         <div>
           <div className="grid" ref={gridElement => this.gridElement = gridElement}>
-            <div className="item box1">
-              <div className="item-content">
-                Box 1
-              </div>
-            </div>
-            <div className="item box2">
-              <div className="item-content">
-                Box 2
-              </div>
-            </div>
+            {this.props.gallery.map((item, index) => {
+              return (
+                <div className="item"
+                      key={index}>
+                  <div className="item-content">
+                    <Image src={item.primaryImage}/>
+                  </div>
+                </div>
+              )
+            })}
           </div>
         </div>
       </Section>
@@ -46,7 +46,7 @@ class MyGallery extends Component {
 }
 
 const mapStateToProps = (state) => ({
-
+  gallery: state.gallery
 })
 
 const mapDispatchToProps = (dispatch) => ({

@@ -27,7 +27,6 @@ class DiscoverColumn extends Component {
     this.props.updateData(this.props.column, this.state.tagValue, nextIndex)
   }
   render() {
-    console.log(this.props)
     return (
       <div>
         <Form.Field>

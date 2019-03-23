@@ -27,12 +27,10 @@ code {
 .item {
   display: block;
   position: absolute;
-  width: 100px;
-  height: 100px;
+  width: 25%;
+  height: auto;
   margin: 5px;
   z-index: 1;
-  background: #000;
-  color: #fff;
 }
 .item.muuri-item-dragging {
   z-index: 3;
