@@ -13,6 +13,12 @@ code {
     monospace;
 }
 
+.discoverImage.image.is-square img {
+  cursor: pointer;
+  object-fit: contain;
+  margin: auto;
+}
+
 /* Muuri Styling */
 
 .grid {
