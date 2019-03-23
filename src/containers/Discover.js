@@ -12,15 +12,18 @@ class Discover extends Component {
     this.state = {
       column1: {
         tag: 'sunflowers',
-        image: ''
+        image: '',
+        data: ''
       },
       column2: {
         tag: 'sunflowers',
-        image: ''
+        image: '',
+        data: ''
       },
       column3: {
         tag: 'sunflowers',
-        image: ''
+        image: '',
+        data: ''
       }
     }
   }
@@ -31,10 +34,12 @@ class Discover extends Component {
       axios.get('https://collectionapi.metmuseum.org/public/collection/v1/objects/' + objectID)
       .then((response) => {
         let image = response.data.primaryImage
+        let data = response.data
         this.setState({
           [column]: {
             tag: tag,
-            image: image
+            image: image,
+            data: data
           }
         })
       })
@@ -58,17 +63,23 @@ class Discover extends Component {
           <Columns.Column>
             <DiscoverColumn column={'column1'}
                             image={this.state.column1.image}
-                            updateData={this.updateData}/>
+                            data={this.state.column1.data}
+                            updateData={this.updateData}
+                            updateGallery={this.props.updateGallery}/>
           </Columns.Column>
           <Columns.Column>
             <DiscoverColumn column={'column2'}
                             image={this.state.column2.image}
-                            updateData={this.updateData}/>
+                            data={this.state.column2.data}
+                            updateData={this.updateData}
+                            updateGallery={this.props.updateGallery}/>
           </Columns.Column>
           <Columns.Column>
             <DiscoverColumn column={'column3'}
                             image={this.state.column3.image}
-                            updateData={this.updateData}/>
+                            data={this.state.column3.data}
+                            updateData={this.updateData}
+                            updateGallery={this.props.updateGallery}/>
           </Columns.Column>
         </Columns>
       </Section>
@@ -81,7 +92,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-
+  updateGallery: (data) => dispatch({type: 'UPDATE_GALLERY', data: data})
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Discover)

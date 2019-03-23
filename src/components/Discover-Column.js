@@ -19,13 +19,14 @@ class DiscoverColumn extends Component {
     this.props.updateData(this.props.column, event.target.value, this.state.index)
   }
   updateImage() {
+    const nextIndex = this.state.index + 1
     this.setState({
-      index: this.state.index + 1
+      index: nextIndex
     })
-    this.props.updateData(this.props.column, this.state.tagValue, this.state.index)
+    this.props.updateData(this.props.column, this.state.tagValue, nextIndex)
   }
   render() {
-    console.log(this.state)
+    console.log(this.props)
     return (
       <div>
         <Form.Field>
@@ -40,7 +41,10 @@ class DiscoverColumn extends Component {
           </Form.Control>
         </Form.Field>
         <Form.Field>
-          <Image src={this.props.image}/>
+          <Image className="discoverImage"
+                  size='square'
+                  src={this.props.image}
+                  onClick={() => this.props.updateGallery(this.props.data)}/>
         </Form.Field>
         <Form.Field>
           <Form.Control>
