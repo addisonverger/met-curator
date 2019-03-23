@@ -1,5 +1,5 @@
 const initialState = {
-  
+  gallery: []
 }
 
 function deepCopy(x) {
@@ -7,8 +7,15 @@ function deepCopy(x) {
 }
 
 const reducer = (state = initialState, action) => {
+  let newGallery = deepCopy(state.gallery)
 
   switch (action.type) {
+    case 'UPDATE_GALLERY':
+      newGallery.push(action.data)
+      return {
+        gallery: newGallery
+      }
+
     default:
       return state
   }
