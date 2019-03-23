@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import MuuriGrid from 'react-muuri'
 
-import { Section, Image } from 'react-bulma-components/full'
+import { Section, Container, Image } from 'react-bulma-components/full'
 
 class MyGallery extends Component {
   constructor(props) {
@@ -16,7 +16,8 @@ class MyGallery extends Component {
         dragEnabled: true,
         layout: {
           fillGaps: true
-        }
+        },
+        layoutOnResize: true
       },
     });
   }
@@ -26,20 +27,22 @@ class MyGallery extends Component {
   render() {
     return (
       <Section>
-        <div>
-          <div className="grid" ref={gridElement => this.gridElement = gridElement}>
-            {this.props.gallery.map((item, index) => {
-              return (
-                <div className="item"
-                      key={index}>
-                  <div className="item-content">
-                    <Image src={item.primaryImage}/>
+        <Container>
+          <div>
+            <div className="grid" ref={gridElement => this.gridElement = gridElement}>
+              {this.props.gallery.map((item, index) => {
+                return (
+                  <div className="item"
+                        key={index}>
+                    <div className="item-content">
+                      <Image src={item.primaryImage}/>
+                    </div>
                   </div>
-                </div>
-              )
-            })}
+                )
+              })}
+            </div>
           </div>
-        </div>
+        </Container>
       </Section>
     )
   }

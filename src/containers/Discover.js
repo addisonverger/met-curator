@@ -4,7 +4,7 @@ import axios from 'axios'
 
 import DiscoverColumn from '../components/Discover-Column.js'
 
-import { Section, Columns } from 'react-bulma-components/full'
+import { Section, Container, Columns } from 'react-bulma-components/full'
 
 class Discover extends Component {
   constructor(props) {
@@ -58,29 +58,31 @@ class Discover extends Component {
   render() {
     return (
       <Section>
-        <Columns>
-          <Columns.Column>
-            <DiscoverColumn column={'column1'}
-                            image={this.state.column1.image}
-                            data={this.state.column1.data}
-                            updateData={this.updateData}
-                            updateGallery={this.props.updateGallery}/>
-          </Columns.Column>
-          <Columns.Column>
-            <DiscoverColumn column={'column2'}
-                            image={this.state.column2.image}
-                            data={this.state.column2.data}
-                            updateData={this.updateData}
-                            updateGallery={this.props.updateGallery}/>
-          </Columns.Column>
-          <Columns.Column>
-            <DiscoverColumn column={'column3'}
-                            image={this.state.column3.image}
-                            data={this.state.column3.data}
-                            updateData={this.updateData}
-                            updateGallery={this.props.updateGallery}/>
-          </Columns.Column>
-        </Columns>
+        <Container>
+          <Columns>
+            <Columns.Column>
+              <DiscoverColumn column={'column1'}
+                              image={this.state.column1.image}
+                              data={this.state.column1.data}
+                              updateData={this.updateData}
+                              updateGallery={this.props.updateGallery}/>
+            </Columns.Column>
+            <Columns.Column>
+              <DiscoverColumn column={'column2'}
+                              image={this.state.column2.image}
+                              data={this.state.column2.data}
+                              updateData={this.updateData}
+                              updateGallery={this.props.updateGallery}/>
+            </Columns.Column>
+            <Columns.Column>
+              <DiscoverColumn column={'column3'}
+                              image={this.state.column3.image}
+                              data={this.state.column3.data}
+                              updateData={this.updateData}
+                              updateGallery={this.props.updateGallery}/>
+            </Columns.Column>
+          </Columns>
+        </Container>
       </Section>
     )
   }

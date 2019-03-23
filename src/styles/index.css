@@ -29,8 +29,7 @@ code {
   position: absolute;
   width: 25%;
   height: auto;
-  margin: 5px;
-  z-index: 1;
+  padding: 5px
 }
 .item.muuri-item-dragging {
   z-index: 3;

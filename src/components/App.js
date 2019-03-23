@@ -28,31 +28,30 @@ class App extends Component {
       'my-gallery': <MyGallery />
     }
     return (
-      <Section>
-        <Container>
-          <Tabs type='boxed'>
-            <Tabs.Tab className={this.state.isActive === 0 ? 'is-active' : ''}
-                      onClick={() => this.openTab('discover')}>
-              Discover
-            </Tabs.Tab>
-            <Tabs.Tab className={this.state.isActive === 1 ? 'is-active' : ''}
-                      onClick={() => this.openTab('my-gallery')}>
-              My Gallery
-            </Tabs.Tab>
-          </Tabs>
-          <Level>
-            {/* <Level.Side align='left'> */}
-
-            {/* </Level.Side> */}
-            <Level.Side align='right'>
-              <Level.Item>
-                <a href="#">Login</a>
-              </Level.Item>
-            </Level.Side>
-          </Level>
-          { contents[this.state.currentTab] }
-        </Container>
-      </Section>
+      <div>
+        <Section>
+          <Container>
+            <Level>
+              <Level.Side align='right'>
+                <Level.Item>
+                  <a href="#">Login</a>
+                </Level.Item>
+              </Level.Side>
+            </Level>
+            <Tabs type='boxed'>
+              <Tabs.Tab className={this.state.isActive === 0 ? 'is-active' : ''}
+                        onClick={() => this.openTab('discover')}>
+                Discover
+              </Tabs.Tab>
+              <Tabs.Tab className={this.state.isActive === 1 ? 'is-active' : ''}
+                        onClick={() => this.openTab('my-gallery')}>
+                My Gallery
+              </Tabs.Tab>
+            </Tabs>
+          </Container>
+        </Section>
+        { contents[this.state.currentTab] }
+      </div>
     );
   }
 }
