@@ -12,11 +12,12 @@ class DiscoverColumn extends Component {
     }
   }
   updateTag(event) {
+    const nextTag = event.target.value
     this.setState({
-      tagValue: event.target.value,
+      tagValue: nextTag,
       index: 0
     })
-    this.props.updateData(this.props.column, event.target.value, this.state.index)
+    this.props.updateData(this.props.column, nextTag, 0)
   }
   updateImage() {
     const nextIndex = this.state.index + 1
