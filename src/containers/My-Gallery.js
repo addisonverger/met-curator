@@ -47,7 +47,8 @@ class MyGallery extends Component {
             </div>
           </div>
         </Container>
-        <GalleryFooter />
+        {this.props.gallery.find((element) => {return element.isSelected === true}) !== undefined ?
+        <GalleryFooter /> : '' }
       </Section>
     )
   }
