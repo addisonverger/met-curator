@@ -12,8 +12,14 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case 'UPDATE_GALLERY':
       if (newGallery.find((element) => {return element.objectID === action.data.objectID}) === undefined) {
-        newGallery.push(action.data)
+        newGallery.push({data: action.data, isSelected: false})
       }
+      return {
+        gallery: newGallery
+      }
+
+    case 'SELECT_IMAGE':
+      newGallery[action.index].isSelected = !state.gallery[action.index].isSelected
       return {
         gallery: newGallery
       }

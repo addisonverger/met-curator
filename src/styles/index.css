@@ -35,6 +35,10 @@ h1 {
   padding: 1.5rem;
 }
 
+.selected {
+  border: dashed medium blue
+}
+
 /* Muuri Styling */
 
 .grid {

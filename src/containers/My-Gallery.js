@@ -15,7 +15,7 @@ class MyGallery extends Component {
     this.grid = new MuuriGrid({
       node: this.gridElement,
       defaultOptions: {
-        dragEnabled: true,
+        // dragEnabled: true,
         // layout: {
         //   fillGaps: true
         // },
@@ -27,6 +27,7 @@ class MyGallery extends Component {
     this.grid.getMethod('destroy');
   }
   render() {
+    console.log(this.state)
     return (
       <Section>
         <Container>
@@ -36,8 +37,9 @@ class MyGallery extends Component {
                 return (
                   <div className="item"
                         key={index}>
-                    <div className="item-content">
-                      <Image src={item.primaryImage}/>
+                    <div className={item.isSelected ? "item-content selected" : "item-content"}
+                        onClick={() => this.props.selectImage(index)}>
+                      <Image src={item.data.primaryImage}/>
                     </div>
                   </div>
                 )
@@ -56,7 +58,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-
+  selectImage: (index) => dispatch({type: 'SELECT_IMAGE', index: index})
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(MyGallery)
