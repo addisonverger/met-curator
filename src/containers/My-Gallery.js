@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import MuuriGrid from 'react-muuri'
 
+import GalleryFooter from '../components/Gallery-Footer.js'
+
 import { Section, Container, Image } from 'react-bulma-components/full'
 
 class MyGallery extends Component {
@@ -14,9 +16,9 @@ class MyGallery extends Component {
       node: this.gridElement,
       defaultOptions: {
         dragEnabled: true,
-        layout: {
-          fillGaps: true
-        },
+        // layout: {
+        //   fillGaps: true
+        // },
         layoutOnResize: true
       },
     });
@@ -43,6 +45,7 @@ class MyGallery extends Component {
             </div>
           </div>
         </Container>
+        <GalleryFooter />
       </Section>
     )
   }

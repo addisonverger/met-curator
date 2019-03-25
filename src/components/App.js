@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Discover from '../containers/Discover.js'
 import MyGallery from '../containers/My-Gallery.js'
 
-import { Section, Container, Level, Tabs } from 'react-bulma-components/full'
+import { Section, Container, Level, Tabs, Heading } from 'react-bulma-components/full'
 
 class App extends Component {
   constructor(props) {
@@ -32,24 +32,31 @@ class App extends Component {
         <Section>
           <Container>
             <Level>
+              <Level.Side align='left'>
+                <Level.Item>
+                  <Heading size={2}>Met Curator</Heading>
+                </Level.Item>
+              </Level.Side>
               <Level.Side align='right'>
                 <Level.Item>
                   <a href="#">Login</a>
                 </Level.Item>
               </Level.Side>
             </Level>
-            <Tabs type='boxed'>
-              <Tabs.Tab className={this.state.isActive === 0 ? 'is-active' : ''}
-                        onClick={() => this.openTab('discover')}>
-                Discover
-              </Tabs.Tab>
-              <Tabs.Tab className={this.state.isActive === 1 ? 'is-active' : ''}
-                        onClick={() => this.openTab('my-gallery')}>
-                My Gallery
-              </Tabs.Tab>
-            </Tabs>
           </Container>
         </Section>
+        <Container>
+          <Tabs type='boxed'>
+            <Tabs.Tab className={this.state.isActive === 0 ? 'is-active' : ''}
+                      onClick={() => this.openTab('discover')}>
+              Discover
+            </Tabs.Tab>
+            <Tabs.Tab className={this.state.isActive === 1 ? 'is-active' : ''}
+                      onClick={() => this.openTab('my-gallery')}>
+              My Gallery
+            </Tabs.Tab>
+          </Tabs>
+        </Container>
         { contents[this.state.currentTab] }
       </div>
     );

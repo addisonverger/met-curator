@@ -13,10 +13,26 @@ code {
     monospace;
 }
 
+h1 {
+  font-family: 'Germania One', cursive;
+}
+
+*, .control.font {
+  font-family: 'Assistant', sans-serif;
+}
+
 .discoverImage.image.is-square img {
   cursor: pointer;
   object-fit: contain;
   margin: auto;
+}
+
+#footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 1.5rem;
 }
 
 /* Muuri Styling */

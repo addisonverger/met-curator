@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 
 import { Form, Image, Button } from 'react-bulma-components/full'
 
@@ -33,7 +32,7 @@ class DiscoverColumn extends Component {
           <Form.Control>
             <Form.Select value={this.state.tagValue}
                         onChange={(event) => this.updateTag(event)}
-                        className='is-fullwidth'>
+                        className='is-fullwidth font is-black'>
               <option value='sunflowers'>Sunflowers</option>
               <option value='dress'>Dress</option>
               <option value='cats'>Cats</option>
@@ -50,7 +49,9 @@ class DiscoverColumn extends Component {
           <Form.Control>
             <Button outlined
                     fullwidth
+                    color='black'
                     type='button'
+                    className='font'
                     onClick={() => this.updateImage()}>
               New
             </Button>
