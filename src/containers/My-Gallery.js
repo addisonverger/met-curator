@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import MuuriGrid from 'react-muuri'
 
+import ImageModal from '../components/Image-Modal.js'
 import GalleryFooter from '../components/Gallery-Footer.js'
 
 import { Section, Container, Image } from 'react-bulma-components/full'
@@ -23,11 +24,10 @@ class MyGallery extends Component {
       },
     });
   }
-  componentWillUnmount () {
-    this.grid.getMethod('destroy');
-  }
+  // componentWillUnmount () {
+  //   this.grid.getMethod('destroy');
+  // }
   render() {
-    console.log(this.state)
     return (
       <Section>
         <Container>
@@ -40,6 +40,7 @@ class MyGallery extends Component {
                     <div className={item.isSelected ? "item-content selected" : "item-content"}
                         onClick={() => this.props.selectImage(index)}>
                       <Image src={item.data.primaryImage}/>
+                      <ImageModal data={this.props.gallery[index].data}/>
                     </div>
                   </div>
                 )
