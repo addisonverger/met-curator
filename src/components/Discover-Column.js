@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { Form, Image, Button } from 'react-bulma-components/full'
+import { Form, Image, Icon, Button } from 'react-bulma-components/full'
 
 class DiscoverColumn extends Component {
   constructor(props) {
@@ -39,11 +39,16 @@ class DiscoverColumn extends Component {
             </Form.Select>
           </Form.Control>
         </Form.Field>
-        <Form.Field>
+        <Form.Field className="container">
           <Image className="discoverImage"
                   size='square'
                   src={this.props.image}
                   onClick={() => this.props.updateGallery(this.props.data)}/>
+          {this.props.gallery.find((element) => {return element.data.primaryImage === this.props.image}) !== undefined ?
+          <Icon className="favorite"
+                color='link'>
+            <i className="fas fa-3x fa-splotch"></i>
+          </Icon> : '' }
         </Form.Field>
         <Form.Field>
           <Form.Control>

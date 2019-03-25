@@ -39,6 +39,15 @@ h1 {
   border: dashed medium blue
 }
 
+.container {
+  position: relative;
+}
+
+.favorite {
+  position: absolute;
+  object-fit: contain;
+}
+
 /* a {
   color: blue
 } */

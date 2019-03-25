@@ -65,21 +65,24 @@ class Discover extends Component {
                               image={this.state.column1.image}
                               data={this.state.column1.data}
                               updateData={this.updateData}
-                              updateGallery={this.props.updateGallery}/>
+                              updateGallery={this.props.updateGallery}
+                              gallery={this.props.gallery}/>
             </Columns.Column>
             <Columns.Column>
               <DiscoverColumn column={'column2'}
                               image={this.state.column2.image}
                               data={this.state.column2.data}
                               updateData={this.updateData}
-                              updateGallery={this.props.updateGallery}/>
+                              updateGallery={this.props.updateGallery}
+                              gallery={this.props.gallery}/>
             </Columns.Column>
             <Columns.Column>
               <DiscoverColumn column={'column3'}
                               image={this.state.column3.image}
                               data={this.state.column3.data}
                               updateData={this.updateData}
-                              updateGallery={this.props.updateGallery}/>
+                              updateGallery={this.props.updateGallery}
+                              gallery={this.props.gallery}/>
             </Columns.Column>
           </Columns>
         </Container>
@@ -89,7 +92,7 @@ class Discover extends Component {
 }
 
 const mapStateToProps = (state) => ({
-
+  gallery: state.gallery
 })
 
 const mapDispatchToProps = (dispatch) => ({
