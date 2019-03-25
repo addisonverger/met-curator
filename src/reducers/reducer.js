@@ -24,6 +24,17 @@ const reducer = (state = initialState, action) => {
         gallery: newGallery
       }
 
+    case 'REMOVE_IMAGE':
+      var i
+      for (i = newGallery.length - 1; i >= 0; i -= 1) {
+        if (newGallery[i].isSelected === true) {
+          newGallery.splice(i, 1)
+        }
+      }
+      return {
+        gallery: newGallery
+      }
+
     default:
       return state
   }

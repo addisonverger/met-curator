@@ -38,7 +38,8 @@ class GalleryFooter extends Component {
                 <Button outlined
                         color='black'
                         type='button'
-                        className='font'>
+                        className='font'
+                        onClick={() => this.props.removeImage()}>
                   Remove
                 </Button>
               </Level.Item>
