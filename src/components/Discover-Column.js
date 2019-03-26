@@ -18,12 +18,13 @@ class DiscoverColumn extends Component {
     })
     this.props.updateData(this.props.column, nextTag, 0)
   }
-  updateImage() {
+  updateImage(event) {
     const nextIndex = this.state.index + 1
     this.setState({
       index: nextIndex
     })
     this.props.updateData(this.props.column, this.state.tagValue, nextIndex)
+    event.target.blur()
   }
   render() {
     return (
@@ -57,7 +58,7 @@ class DiscoverColumn extends Component {
                     color='black'
                     type='button'
                     className='font'
-                    onClick={() => this.updateImage()}>
+                    onClick={(event) => this.updateImage(event)}>
               New
             </Button>
           </Form.Control>

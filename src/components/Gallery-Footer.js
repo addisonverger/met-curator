@@ -22,6 +22,14 @@ class GalleryFooter extends Component {
       newExhibition: newExhibitionValue
     })
   }
+  handleNewExhibition = (event) => {
+    this.props.addExhibition(this.state.newExhibition)
+    this.setState({
+      newExhibition: ''
+    })
+    event.target.blur()
+  }
+  handle
   render() {
     return (
       <Footer id='footer'>
@@ -66,7 +74,7 @@ class GalleryFooter extends Component {
                         color='black'
                         type='button'
                         className='font'
-                        onClick={() => this.props.addExhibition(this.state.newExhibition)}>
+                        onClick={(event) => this.handleNewExhibition(event)}>
                   New
                 </Button>
               </Level.Item>
