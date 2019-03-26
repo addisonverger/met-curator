@@ -37,21 +37,12 @@ class GalleryFooter extends Component {
           <Level>
             <Level.Side align='left'>
               <Level.Item>
-                <Button outlined
-                        color='black'
-                        type='button'
-                        className='font'
-                        onClick={() => this.props.moveExhibition(this.state.exhibition)}>
-                  Move to
-                </Button>
-              </Level.Item>
-              <Level.Item>
                 <Form.Select value={this.state.exhibition}
                             onChange={(event) => this.updateExhibition(event)}
                             className='font is-black'>
                   <option key="0"
                           value="new">
-                    New
+                    New Exhibition
                   </option>
                   {this.props.exhibitions.map((exhibition, index) => {
                     return (
@@ -63,21 +54,33 @@ class GalleryFooter extends Component {
                   })}
                 </Form.Select>
               </Level.Item>
+              {this.state.exhibition === 'new' ?
               <Level.Item>
                 <Form.Input value={this.state.newExhibition}
                             onChange={(event) => this.updateNewExhibition(event)}
                             className='font is-black'>
                 </Form.Input>
-              </Level.Item>
+              </Level.Item> : ''}
+              {this.state.exhibition === 'new' ?
               <Level.Item>
                 <Button outlined
                         color='black'
                         type='button'
                         className='font'
                         onClick={(event) => this.handleNewExhibition(event)}>
-                  New
+                  Add
                 </Button>
-              </Level.Item>
+              </Level.Item> : ''}
+              {this.state.exhibition !== 'new' ?
+              <Level.Item>
+                <Button outlined
+                        color='black'
+                        type='button'
+                        className='font'
+                        onClick={() => this.props.moveExhibition(this.state.exhibition)}>
+                  Move to
+                </Button>
+              </Level.Item> : ''}
             </Level.Side>
             <Level.Side align='right'>
               <Level.Item>
