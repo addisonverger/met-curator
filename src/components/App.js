@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Discover from '../containers/Discover.js'
 import MyGallery from '../containers/My-Gallery.js'
+import MyExhibitions from '../containers/My-Exhibitions.js'
 
 import { Section, Container, Level, Tabs, Heading } from 'react-bulma-components/full'
 
@@ -15,7 +16,8 @@ class App extends Component {
   openTab = (currentTab) => {
     const contents = {
       'discover': 0,
-      'my-gallery': 1
+      'my-gallery': 1,
+      'my-exhibitions': 2
     }
     this.setState({
       currentTab: currentTab,
@@ -25,7 +27,8 @@ class App extends Component {
   render() {
     const contents = {
       'discover': <Discover />,
-      'my-gallery': <MyGallery />
+      'my-gallery': <MyGallery />,
+      'my-exhibitions': <MyExhibitions />
     }
     return (
       <div>
@@ -54,6 +57,10 @@ class App extends Component {
             <Tabs.Tab className={this.state.isActive === 1 ? 'is-active' : ''}
                       onClick={() => this.openTab('my-gallery')}>
               My Gallery
+            </Tabs.Tab>
+            <Tabs.Tab className={this.state.isActive === 2 ? 'is-active' : ''}
+                      onClick={() => this.openTab('my-exhibitions')}>
+              My Exhibitions
             </Tabs.Tab>
           </Tabs>
         </Container>
