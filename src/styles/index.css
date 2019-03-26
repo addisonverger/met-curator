@@ -18,7 +18,7 @@ h1 {
 }
 
 *, .control.font {
-  font-family: 'Assistant', sans-serif;
+  font-family: 'Martel Sans', sans-serif;
 }
 
 .discoverImage.image.is-square img {
@@ -46,6 +46,28 @@ h1 {
 .favorite {
   position: absolute;
   object-fit: contain;
+}
+
+.card-footer {
+  border: dashed thick white;
+  /* border: dashed thick blue; */
+  font-weight: 800;
+  font-size: 1.3rem;
+  background-color: blue;
+  color: white;
+  padding: 5px
+}
+
+.card-footer a {
+  /* color: #4a4a4a; */
+  color: white;
+  text-decoration: underline;
+}
+
+.card-footer a:hover {
+  /* color: #4a4a4a; */
+  color: white;
+  text-decoration: none;
 }
 
 /* a {
@@ -87,6 +109,6 @@ h1 {
   display: none
 }
 
-/* figure.image:hover + div {
+figure.image:hover + div {
   display: block
-} */
+}

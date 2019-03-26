@@ -16,9 +16,8 @@ class ImageModal extends Component {
   }
   render() {
     return (
-      <div>
-        <Icon className="top-right"
-              color='link'
+      <div className="top-right">
+        <Icon color='link'
               onClick={() => this.toggleModal()}>
           <i className="fas fa-3x fa-search-plus"></i>
         </Icon>
@@ -27,7 +26,7 @@ class ImageModal extends Component {
             <Card>
               <Card.Image src={this.props.data.primaryImage}/>
               <Card.Footer>
-                <p style={{margin: 'auto'}}>
+                <p style={{textAlign: 'center', margin: 'auto'}}>
                   {this.props.data.artistDisplayName + '. '}
                   {this.props.data.title + '. '}
                   {this.props.data.objectDate + '. '}
