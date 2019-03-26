@@ -47,6 +47,21 @@ const reducer = (state = initialState, action) => {
         exhibitions: newExhibitions
       }
 
+    case 'MOVE_EXHIBITION':
+      const selectedIndex = newExhibitions.findIndex((exhibition) => {
+        return exhibition.title === action.title
+      })
+      newGallery.forEach((element) => {
+        if (element.isSelected === true) {
+          newExhibitions[selectedIndex].objects.push(element.data)
+          element.isSelected = false
+        }
+      })
+      return {
+        gallery: newGallery,
+        exhibitions: newExhibitions
+      }
+
     default:
       return state
   }

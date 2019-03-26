@@ -6,7 +6,7 @@ class GalleryFooter extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      exhibition: 'exhib 1',
+      exhibition: 'new',
       newExhibition: ''
     }
   }
@@ -33,8 +33,7 @@ class GalleryFooter extends Component {
                         color='black'
                         type='button'
                         className='font'
-                        // onClick={}
-                        >
+                        onClick={() => this.props.moveExhibition(this.state.exhibition)}>
                   Move to
                 </Button>
               </Level.Item>
