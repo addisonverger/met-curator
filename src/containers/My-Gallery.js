@@ -49,18 +49,22 @@ class MyGallery extends Component {
           </div>
         </Container>
         {this.props.gallery.find((element) => {return element.isSelected === true}) !== undefined ?
-        <GalleryFooter removeImage={this.props.removeImage}/> : '' }
+        <GalleryFooter addExhibition={this.props.addExhibition}
+                      removeImage={this.props.removeImage}
+                      exhibitions={this.props.exhibitions}/> : '' }
       </Section>
     )
   }
 }
 
 const mapStateToProps = (state) => ({
-  gallery: state.gallery
+  gallery: state.gallery,
+  exhibitions: state.exhibitions
 })
 
 const mapDispatchToProps = (dispatch) => ({
   selectImage: (index) => dispatch({type: 'SELECT_IMAGE', index: index}),
+  addExhibition: (title) => dispatch({type: 'ADD_EXHIBITION', title: title}),
   removeImage: () => dispatch({type: 'REMOVE_IMAGE'})
 })
 

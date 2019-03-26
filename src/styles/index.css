@@ -80,13 +80,13 @@ h1 {
   height: 100%;
 }
 
-.item-content:hover div {
-  display: block;
-}
-
 .top-right {
   position: absolute;
   top: 8px;
   right: 8px;
-  display: none;
+  display: none
 }
+
+/* figure.image:hover + div {
+  display: block
+} */

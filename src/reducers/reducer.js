@@ -1,5 +1,6 @@
 const initialState = {
-  gallery: []
+  gallery: [],
+  exhibitions: []
 }
 
 function deepCopy(x) {
@@ -8,6 +9,7 @@ function deepCopy(x) {
 
 const reducer = (state = initialState, action) => {
   let newGallery = deepCopy(state.gallery)
+  let newExhibitions = deepCopy(state.exhibitions)
 
   switch (action.type) {
     case 'UPDATE_GALLERY':
@@ -15,12 +17,14 @@ const reducer = (state = initialState, action) => {
         newGallery.push({data: action.data, isSelected: false})
       }
       return {
+        ...state,
         gallery: newGallery
       }
 
     case 'SELECT_IMAGE':
       newGallery[action.index].isSelected = !state.gallery[action.index].isSelected
       return {
+        ...state,
         gallery: newGallery
       }
 
@@ -32,7 +36,15 @@ const reducer = (state = initialState, action) => {
         }
       }
       return {
+        ...state,
         gallery: newGallery
+      }
+
+    case 'ADD_EXHIBITION':
+      newExhibitions.push({title: action.title, objects:[]})
+      return {
+        ...state,
+        exhibitions: newExhibitions
       }
 
     default:
