@@ -27,11 +27,11 @@ class ImageModal extends Component {
               <Card.Image src={this.props.data.primaryImage}/>
               <Card.Footer>
                 <p style={{textAlign: 'center', margin: 'auto'}}>
-                  {this.props.data.artistDisplayName + '. '}
-                  {this.props.data.title + '. '}
-                  {this.props.data.objectDate + '. '}
-                  {this.props.data.medium + '. '}
-                  {this.props.data.department + '. '}
+                  {this.props.data.artistDisplayName !== '' ? this.props.data.artistDisplayName + '. ' : ''}
+                  {this.props.data.title !== '' ? this.props.data.title + '. ' : ''}
+                  {this.props.data.objectDate !== '' ? this.props.data.objectDate + '. ' : ''}
+                  {this.props.data.medium !== '' ? this.props.data.medium + '. ' : ''}
+                  {this.props.data.department !== '' ? this.props.data.department + '. ' : ''}
                   <a href={this.props.data.objectURL}
                       target='_blank'
                       rel="noopener noreferrer">More info.</a>

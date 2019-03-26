@@ -3,7 +3,7 @@ import Discover from '../containers/Discover.js'
 import MyGallery from '../containers/My-Gallery.js'
 import MyExhibitions from '../containers/My-Exhibitions.js'
 
-import { Section, Container, Level, Tabs, Heading } from 'react-bulma-components/full'
+import { Section, Container, Level, Icon, Tabs, Heading } from 'react-bulma-components/full'
 
 class App extends Component {
   constructor(props) {
@@ -36,6 +36,12 @@ class App extends Component {
           <Container>
             <Level>
               <Level.Side align='left'>
+                {/* <Level.Item>
+                  <Icon color='danger'
+                        style={{paddingBottom: '5px'}}>
+                    <i className="fas fa-2x fa-shapes"></i>
+                  </Icon>
+                </Level.Item> */}
                 <Level.Item>
                   <Heading size={2}>Met Curator</Heading>
                 </Level.Item>
