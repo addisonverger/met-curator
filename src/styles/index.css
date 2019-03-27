@@ -48,23 +48,22 @@ h1 {
   object-fit: contain;
 }
 
-.card-footer {
-  border: dashed thick white;
+.modal-card > .modal-card-foot {
+  /* border: dashed thick white; */
   /* border: dashed thick blue; */
   font-weight: 800;
   font-size: 1.3rem;
   background-color: blue;
   color: white;
-  padding: 5px
 }
 
-.card-footer a {
+.modal-card-foot a {
   /* color: #4a4a4a; */
   color: white;
   text-decoration: underline;
 }
 
-.card-footer a:hover {
+.modal-card-foot a:hover {
   /* color: #4a4a4a; */
   color: white;
   text-decoration: none;
