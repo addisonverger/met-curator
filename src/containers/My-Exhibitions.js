@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import interact from 'interactjs'
 
-import { Section, Container, Level, Form, Image } from 'react-bulma-components/full'
+import { Section, Container, Level, Form, Button, Image } from 'react-bulma-components/full'
 
 // Interactjs
 
@@ -101,7 +101,7 @@ class MyExhibitions extends Component {
     super(props)
     this.state = {
       exhibition: 'select',
-      index: 0
+      index: -1
     }
   }
   updateExhibition(event) {
@@ -112,6 +112,13 @@ class MyExhibitions extends Component {
     this.setState({
       exhibition: nextExhibition,
       index: newIndex
+    })
+  }
+  handleRemoveExhibition() {
+    this.props.removeExhibition(this.state.exhibition)
+    this.setState({
+      exhibition: 'select',
+      index: -1
     })
   }
   render() {
@@ -125,7 +132,7 @@ class MyExhibitions extends Component {
               <Level.Item>
                 <Form.Select value={this.state.exhibition}
                             onChange={(event) => this.updateExhibition(event)}
-                            className='font is-black'>
+                            className='is-black'>
                   <option key='0'
                           value='select'>
                     Select an Exhibition
@@ -140,16 +147,25 @@ class MyExhibitions extends Component {
                   })}
                 </Form.Select>
               </Level.Item>
+              <Level.Item>
+                <Button outlined
+                        color='black'
+                        type='button'
+                        onClick={() => this.handleRemoveExhibition()}>
+                  Remove
+                </Button>
+              </Level.Item>
             </Level.Side>
           </Level>
           <div className="resizable">
-            {this.props.exhibitions[this.state.index].objects.map((element, index) => {
+            {this.state.index !== -1 ?
+            this.props.exhibitions[this.state.index].objects.map((element, index) => {
               return (
                 <Image key={index}
                         className="draggable"
                         src={element.primaryImageSmall} />
               )
-            })}
+            }) : ''}
           </div>
         </Container>
       </Section>
@@ -163,7 +179,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-
+  removeExhibition: (title) => dispatch({type: 'REMOVE_EXHIBITION', title: title})
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(MyExhibitions)

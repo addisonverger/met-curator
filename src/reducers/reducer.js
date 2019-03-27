@@ -62,6 +62,18 @@ const reducer = (state = initialState, action) => {
         exhibitions: newExhibitions
       }
 
+    case 'REMOVE_EXHIBITION':
+      var j
+      for (j = newExhibitions.length - 1; j >= 0; j -= 1) {
+        if (newExhibitions[j].title === action.title) {
+          newExhibitions.splice(j, 1)
+        }
+      }
+      return {
+        ...state,
+        exhibitions: newExhibitions
+      }
+
     default:
       return state
   }

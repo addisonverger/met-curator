@@ -42,7 +42,7 @@ class DiscoverColumn extends Component {
           <Form.Control>
             <Form.Select value={this.state.tagValue}
                         onChange={(event) => this.updateTag(event)}
-                        className='is-fullwidth font is-black'>
+                        className='is-fullwidth is-black'>
               {imageTags.map((tag, index) => {
                 return (
                   <option value={tag.value}
@@ -71,7 +71,6 @@ class DiscoverColumn extends Component {
                     fullwidth
                     color='black'
                     type='button'
-                    className='font'
                     onClick={(event) => this.updateImage(event)}>
               New
             </Button>

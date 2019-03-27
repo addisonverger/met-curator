@@ -58,7 +58,7 @@ class GalleryFooter extends Component {
               <Level.Item>
                 <Form.Input value={this.state.newExhibition}
                             onChange={(event) => this.updateNewExhibition(event)}
-                            className='font is-black'>
+                            className='is-black'>
                 </Form.Input>
               </Level.Item> : ''}
               {this.state.exhibition === 'new' ?
@@ -66,7 +66,6 @@ class GalleryFooter extends Component {
                 <Button outlined
                         color='black'
                         type='button'
-                        className='font'
                         onClick={(event) => this.handleNewExhibition(event)}>
                   Add
                 </Button>
@@ -76,7 +75,6 @@ class GalleryFooter extends Component {
                 <Button outlined
                         color='black'
                         type='button'
-                        className='font'
                         onClick={() => this.props.moveExhibition(this.state.exhibition)}>
                   Move to
                 </Button>
@@ -87,7 +85,6 @@ class GalleryFooter extends Component {
                 <Button outlined
                         color='black'
                         type='button'
-                        className='font'
                         onClick={() => this.props.removeImage()}>
                   Remove
                 </Button>
