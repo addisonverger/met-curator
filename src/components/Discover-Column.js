@@ -13,9 +13,9 @@ class DiscoverColumn extends Component {
     }
   }
   componentDidMount() {
-    this.state = {
+    this.setState({
       tagValue: imageTags[0].value
-    }
+    })
     this.props.setInitialTag(this.props.column, imageTags[0].value)
   }
   updateTag(event) {

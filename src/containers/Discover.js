@@ -51,13 +51,6 @@ class Discover extends Component {
     this.getImage(column, tag, index)
   }
   setInitialTag = (column, tag) => {
-    this.setState({
-      [column]: {
-        tag: tag,
-        image: '',
-        data: ''
-      }
-    })
     this.getImage(column, tag, 0)
   }
   render() {
