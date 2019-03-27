@@ -13,10 +13,11 @@ class DiscoverColumn extends Component {
     }
   }
   componentDidMount() {
+    const randValue = imageTags[Math.floor(Math.random() * imageTags.length)].value;
     this.setState({
-      tagValue: imageTags[0].value
+      tagValue: randValue
     })
-    this.props.setInitialTag(this.props.column, imageTags[0].value)
+    this.props.setInitialTag(this.props.column, randValue)
   }
   updateTag(event) {
     const nextTag = event.target.value
