@@ -1,14 +1,22 @@
 import React, { Component } from 'react'
 
+import imageTags from '../Image-Tags.js'
+
 import { Form, Image, Icon, Button } from 'react-bulma-components/full'
 
 class DiscoverColumn extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      tagValue: 'sunflowers',
+      tagValue: '',
       index: 0
     }
+  }
+  componentDidMount() {
+    this.state = {
+      tagValue: imageTags[0].value
+    }
+    this.props.setInitialTag(this.props.column, imageTags[0].value)
   }
   updateTag(event) {
     const nextTag = event.target.value
@@ -34,9 +42,14 @@ class DiscoverColumn extends Component {
             <Form.Select value={this.state.tagValue}
                         onChange={(event) => this.updateTag(event)}
                         className='is-fullwidth font is-black'>
-              <option value='sunflowers'>Sunflowers</option>
-              <option value='dress'>Dress</option>
-              <option value='cats'>Cats</option>
+              {imageTags.map((tag, index) => {
+                return (
+                  <option value={tag.value}
+                          key={index}>
+                    {tag.name}
+                  </option>
+                )
+              })}
             </Form.Select>
           </Form.Control>
         </Form.Field>

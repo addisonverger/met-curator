@@ -1,4 +1,4 @@
-let imageTags = [
+const imageTags = [
   {
     name: 'Angel',
     value: 'angel'
@@ -17,7 +17,7 @@ let imageTags = [
   },
   {
     name: 'Blue',
-    value: 'color blue'
+    value: 'color%20blue'
   },
   {
     name: 'Cat',
@@ -89,7 +89,7 @@ let imageTags = [
   },
   {
     name: 'Green',
-    value: 'color green'
+    value: 'color%20green'
   },
   {
     name: 'Horse',
@@ -125,11 +125,11 @@ let imageTags = [
   },
   {
     name: 'Oil Painting',
-    value: 'oil paintings'
+    value: 'oil%20paintings'
   },
   {
     name: 'Paper',
-    value: 'paper material'
+    value: 'paper%20material'
   },
   {
     name: 'Peru',
@@ -137,7 +137,7 @@ let imageTags = [
   },
   {
     name: 'Photograph',
-    value: 'photograph image'
+    value: 'photograph%20image'
   },
   {
     name: 'Portrait',
@@ -145,7 +145,7 @@ let imageTags = [
   },
   {
     name: 'Red',
-    value: 'color red'
+    value: 'color%20red'
   },
   {
     name: 'Sculpture',
@@ -153,7 +153,7 @@ let imageTags = [
   },
   {
     name: 'Silk',
-    value: 'silk material'
+    value: 'silk%20material'
   },
   {
     name: 'Sky',
@@ -173,11 +173,11 @@ let imageTags = [
   },
   {
     name: 'Stained Glass',
-    value: 'stained glass'
+    value: 'stained%20glass'
   },
   {
     name: 'Still Life',
-    value: 'still life'
+    value: 'still%20life'
   },
   {
     name: 'Summer',
@@ -205,6 +205,8 @@ let imageTags = [
   },
   {
     name: 'Yellow',
-    value: 'color yellow'
+    value: 'color%20yellow'
   }
 ]
+
+export default imageTags

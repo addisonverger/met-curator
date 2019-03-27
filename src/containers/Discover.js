@@ -11,17 +11,17 @@ class Discover extends Component {
     super(props)
     this.state = {
       column1: {
-        tag: 'sunflowers',
+        tag: '',
         image: '',
         data: ''
       },
       column2: {
-        tag: 'sunflowers',
+        tag: '',
         image: '',
         data: ''
       },
       column3: {
-        tag: 'sunflowers',
+        tag: '',
         image: '',
         data: ''
       }
@@ -47,13 +47,18 @@ class Discover extends Component {
     })
     .catch((error) => {console.log(error)})
   }
-  componentDidMount() {
-    Object.entries(this.state).forEach((column) => {
-      this.getImage(column[0], column[1].tag, 0)
-    })
-  }
   updateData = (column, tag, index) => {
     this.getImage(column, tag, index)
+  }
+  setInitialTag = (column, tag) => {
+    this.setState({
+      [column]: {
+        tag: tag,
+        image: '',
+        data: ''
+      }
+    })
+    this.getImage(column, tag, 0)
   }
   render() {
     return (
@@ -65,6 +70,7 @@ class Discover extends Component {
                               image={this.state.column1.image}
                               data={this.state.column1.data}
                               updateData={this.updateData}
+                              setInitialTag={this.setInitialTag}
                               updateGallery={this.props.updateGallery}
                               gallery={this.props.gallery}/>
             </Columns.Column>
@@ -73,6 +79,7 @@ class Discover extends Component {
                               image={this.state.column2.image}
                               data={this.state.column2.data}
                               updateData={this.updateData}
+                              setInitialTag={this.setInitialTag}
                               updateGallery={this.props.updateGallery}
                               gallery={this.props.gallery}/>
             </Columns.Column>
@@ -81,6 +88,7 @@ class Discover extends Component {
                               image={this.state.column3.image}
                               data={this.state.column3.data}
                               updateData={this.updateData}
+                              setInitialTag={this.setInitialTag}
                               updateGallery={this.props.updateGallery}
                               gallery={this.props.gallery}/>
             </Columns.Column>
