@@ -53,7 +53,7 @@ class DiscoverColumn extends Component {
             </Form.Select>
           </Form.Control>
         </Form.Field>
-        <Form.Field className="container">
+        <Form.Field className="imageContainer">
           <Image className="discoverImage"
                   size='square'
                   src={this.props.image}
