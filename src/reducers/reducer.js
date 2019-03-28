@@ -40,6 +40,15 @@ const reducer = (state = initialState, action) => {
         gallery: newGallery
       }
 
+    case 'DESELECT_ALL_IMAGES':
+      newGallery.forEach((element) => {
+        element.isSelected = false
+      })
+      return {
+        ...state,
+        gallery: newGallery
+      }
+
     case 'ADD_EXHIBITION':
       newExhibitions.push({title: action.title, objects:[]})
       return {

@@ -85,6 +85,14 @@ class GalleryFooter extends Component {
                 <Button outlined
                         color='black'
                         type='button'
+                        onClick={() => this.props.deselectAllImages()}>
+                  Deselect All
+                </Button>
+              </Level.Item>
+              <Level.Item>
+                <Button outlined
+                        color='black'
+                        type='button'
                         onClick={() => this.props.removeImage()}>
                   Remove
                 </Button>

@@ -17,9 +17,9 @@ class ImageModal extends Component {
   render() {
     return (
       <div className="top-right">
-        <Icon color='link'
+        <Icon color='warning'
               onClick={() => this.toggleModal()}>
-          <i className="fas fa-3x fa-search-plus"></i>
+          <i className="fas fa-4x fa-search-plus"></i>
         </Icon>
         <Modal show={this.state.open} onClose={() => this.toggleModal()}>
           <Modal.Card>
@@ -29,7 +29,7 @@ class ImageModal extends Component {
             <Modal.Card.Foot>
               <p style={{textAlign: 'center', margin: 'auto'}}>
                 {this.props.data.artistDisplayName !== '' ? this.props.data.artistDisplayName + '. ' : ''}
-                {this.props.data.title !== '' ? this.props.data.title + '. ' : ''}
+                <i>{this.props.data.title !== '' ? this.props.data.title + '. ' : ''}</i>
                 {this.props.data.objectDate !== '' ? this.props.data.objectDate + '. ' : ''}
                 {this.props.data.medium !== '' ? this.props.data.medium + '. ' : ''}
                 {this.props.data.department !== '' ? this.props.data.department + '. ' : ''}

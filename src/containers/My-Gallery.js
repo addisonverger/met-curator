@@ -51,6 +51,7 @@ class MyGallery extends Component {
         {this.props.gallery.find((element) => {return element.isSelected === true}) !== undefined ?
         <GalleryFooter moveExhibition={this.props.moveExhibition}
                       addExhibition={this.props.addExhibition}
+                      deselectAllImages={this.props.deselectAllImages}
                       removeImage={this.props.removeImage}
                       exhibitions={this.props.exhibitions}/> : '' }
       </Section>
@@ -65,6 +66,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   selectImage: (index) => dispatch({type: 'SELECT_IMAGE', index: index}),
+  deselectAllImages: () => dispatch({type: 'DESELECT_ALL_IMAGES'}),
   moveExhibition: (title) => dispatch({type: 'MOVE_EXHIBITION', title: title}),
   addExhibition: (title) => dispatch({type: 'ADD_EXHIBITION', title: title}),
   removeImage: () => dispatch({type: 'REMOVE_IMAGE'})

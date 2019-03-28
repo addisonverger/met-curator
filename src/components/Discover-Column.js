@@ -61,7 +61,7 @@ class DiscoverColumn extends Component {
                   onClick={() => this.props.updateGallery(this.props.data)}/>
           {this.props.gallery.find((element) => {return element.data.primaryImage === this.props.image}) !== undefined ?
           <Icon className="favorite"
-                color='link'>
+                color='warning'>
             <i className="fas fa-3x fa-splotch"></i>
           </Icon> : '' }
         </Form.Field>
