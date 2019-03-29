@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import interact from 'interactjs'
+import Resizable from 're-resizable'
+import EdgeScroll from 'edge-scroll'
 
 import { Section, Container, Level, Form, Button, Image } from 'react-bulma-components/full'
 
 // Interactjs
 
 // target elements with the "draggable" class
-interact('.draggable')
+window.INTERACTABLES = interact('.draggable')
   .draggable({
     // enable inertial throwing
     inertia: true,
@@ -35,6 +37,7 @@ interact('.draggable')
             .toFixed(2) + 'px');
     }
   })
+window.interact = interact
  //  .resizable({
  //   // resize from all edges and corners
  //   edges: { left: true, right: true, bottom: true, top: true },
@@ -86,13 +89,17 @@ interact('.draggable')
     target.style.transform =
       'translate(' + x + 'px, ' + y + 'px)';
 
-    // update the posiion attributes
+    // update the position attributes
     target.setAttribute('data-x', x);
     target.setAttribute('data-y', y);
   }
 
   // this is used later in the resizing and gesture demos
   window.dragMoveListener = dragMoveListener;
+
+//
+
+// const edgeScroll = new EdgeScroll(120, 750)
 
 //
 
@@ -122,7 +129,7 @@ class MyExhibitions extends Component {
     })
   }
   render() {
-    console.log(this.props.exhibitions)
+    console.log(this.props)
     console.log(this.state)
     return (
       <Section>
@@ -157,16 +164,24 @@ class MyExhibitions extends Component {
               </Level.Item>
             </Level.Side>
           </Level>
-          <div className="resizable">
+          <Resizable className="exhibitionBox"
+                    defaultSize={{width: '100%', height: 800}}
+                    minHeight={800}
+                    enable={{top:false, right:false, bottom:true, left:false, topRight:false, bottomRight:false, bottomLeft:false, topLeft:false}}>
             {this.state.index !== -1 ?
             this.props.exhibitions[this.state.index].objects.map((element, index) => {
+              let randLeft = Math.floor(Math.random() * (700 - 50) ) + 50
+              let randTop = Math.floor(Math.random() * (500 - 50) ) + 50
+              let newStyle = {position: 'absolute', left: randLeft, top: randTop}
+              console.log(newStyle)
               return (
                 <Image key={index}
                         className="draggable"
+                        style={newStyle}
                         src={element.primaryImageSmall} />
               )
             }) : ''}
-          </div>
+          </Resizable>
         </Container>
       </Section>
     )

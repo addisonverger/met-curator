@@ -29,7 +29,7 @@ const imageTags = [
   },
   {
     name: 'China',
-    value: 'china'
+    value: 'chinese'
   },
   {
     name: 'Circle',
@@ -81,7 +81,7 @@ const imageTags = [
   },
   {
     name: 'Gold',
-    value: 'gold'
+    value: 'gold%20material'
   },
   {
     name: 'Greece',
@@ -101,7 +101,7 @@ const imageTags = [
   },
   {
     name: 'Ink',
-    value: 'ink'
+    value: 'ink%20drawing'
   },
   {
     name: 'Italy',
@@ -112,8 +112,8 @@ const imageTags = [
     value: 'jade'
   },
   {
-    name: 'Jewelery',
-    value: 'jewelery'
+    name: 'Jewelry',
+    value: 'jewelry'
   },
   {
     name: 'Light',
@@ -125,7 +125,7 @@ const imageTags = [
   },
   {
     name: 'Oil Painting',
-    value: 'oil%20paintings'
+    value: 'oil%20canvas'
   },
   {
     name: 'Paper',
