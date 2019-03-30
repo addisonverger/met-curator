@@ -62,7 +62,7 @@ const reducer = (state = initialState, action) => {
       })
       newGallery.forEach((element) => {
         if (element.isSelected === true) {
-          newExhibitions[selectedIndex].objects.push(element.data)
+          newExhibitions[selectedIndex].objects.push({objectID: element.data.objectID, primaryImageSmall: element.data.primaryImageSmall, x: 0, y: 0})
           element.isSelected = false
         }
       })
@@ -78,6 +78,23 @@ const reducer = (state = initialState, action) => {
           newExhibitions.splice(j, 1)
         }
       }
+      return {
+        ...state,
+        exhibitions: newExhibitions
+      }
+
+    case 'UPDATE_EXHIBITION_IMAGE_COORDINATES':
+      const exhibitionIndex = newExhibitions.findIndex((exhibition) => {
+        return exhibition.title === action.exhibition
+      })
+
+      const objectIndex = newExhibitions[exhibitionIndex].objects.findIndex((object) => {
+        return object.objectID === action.objectID
+      })
+
+      newExhibitions[exhibitionIndex].objects[objectIndex].x = action.x
+      newExhibitions[exhibitionIndex].objects[objectIndex].y = action.y
+
       return {
         ...state,
         exhibitions: newExhibitions

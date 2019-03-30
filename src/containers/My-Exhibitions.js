@@ -9,94 +9,96 @@ import { Section, Container, Level, Form, Button, Image } from 'react-bulma-comp
 // Interactjs
 
 // target elements with the "draggable" class
-window.INTERACTABLES = interact('.draggable')
-  .draggable({
-    // enable inertial throwing
-    inertia: true,
-    // keep the element within the area of it's parent
-    modifiers: [
-      interact.modifiers.restrict({
-        restriction: "parent",
-        endOnly: true,
-        elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
-      }),
-    ],
-    // enable autoScroll
-    autoScroll: true,
+function interactJS() {
+  interact('.draggable')
+    .draggable({
+      // enable inertial throwing
+      inertia: true,
+      // keep the element within the area of it's parent
+      modifiers: [
+        interact.modifiers.restrict({
+          restriction: "parent",
+          endOnly: true,
+          elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
+        }),
+      ],
+      // enable autoScroll
+      autoScroll: true,
 
-    // call this function on every dragmove event
-    onmove: dragMoveListener,
-    // call this function on every dragend event
-    onend: function (event) {
-      var textEl = event.target.querySelector('p');
+      // call this function on every dragmove event
+      onmove: dragMoveListener,
+      // call this function on every dragend event
+      onend: (event) => {
+        var target = event.target
 
-      textEl && (textEl.textContent =
-        'moved a distance of '
-        + (Math.sqrt(Math.pow(event.pageX - event.x0, 2) +
-                     Math.pow(event.pageY - event.y0, 2) | 0))
-            .toFixed(2) + 'px');
+        let exhibition = this.state.exhibition
+        let objectID = this.state.selectedImageID
+        let x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
+        let y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
+
+        this.props.updateExhibitionImageCoordinates(exhibition, objectID, x, y)
+      }
+    })
+
+   //  .resizable({
+   //   // resize from all edges and corners
+   //   edges: { left: true, right: true, bottom: true, top: true },
+   //
+   //   modifiers: [
+   //     // keep the edges inside the parent
+   //     interact.modifiers.restrictEdges({
+   //       outer: 'parent',
+   //       endOnly: true,
+   //     }),
+   //
+   //     // minimum size
+   //     interact.modifiers.restrictSize({
+   //       min: { width: 100, height: 50 },
+   //     }),
+   //   ],
+   //
+   //   inertia: true
+   // })
+   // .on('resizemove', function (event) {
+   //   var target = event.target,
+   //       x = (parseFloat(target.getAttribute('data-x')) || 0),
+   //       y = (parseFloat(target.getAttribute('data-y')) || 0);
+   //
+   //   // update the element's style
+   //   target.style.width  = event.rect.width + 'px';
+   //   target.style.height = event.rect.height + 'px';
+   //
+   //   // translate when resizing from top or left edges
+   //   x += event.deltaRect.left;
+   //   y += event.deltaRect.top;
+   //
+   //   target.style.webkitTransform = target.style.transform =
+   //       'translate(' + x + 'px,' + y + 'px)';
+   //
+   //   target.setAttribute('data-x', x);
+   //   target.setAttribute('data-y', y);
+   //   target.textContent = Math.round(event.rect.width) + '\u00D7' + Math.round(event.rect.height);
+   // });
+
+    function dragMoveListener (event) {
+      var target = event.target,
+          // keep the dragged position in the data-x/data-y attributes
+          x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
+          y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+
+      // translate the element
+      target.style.webkitTransform =
+      target.style.transform =
+        'translate(' + x + 'px, ' + y + 'px)';
+
+      // update the position attributes
+      target.setAttribute('data-x', x);
+      target.setAttribute('data-y', y);
     }
-  })
-window.interact = interact
- //  .resizable({
- //   // resize from all edges and corners
- //   edges: { left: true, right: true, bottom: true, top: true },
- //
- //   modifiers: [
- //     // keep the edges inside the parent
- //     interact.modifiers.restrictEdges({
- //       outer: 'parent',
- //       endOnly: true,
- //     }),
- //
- //     // minimum size
- //     interact.modifiers.restrictSize({
- //       min: { width: 100, height: 50 },
- //     }),
- //   ],
- //
- //   inertia: true
- // })
- // .on('resizemove', function (event) {
- //   var target = event.target,
- //       x = (parseFloat(target.getAttribute('data-x')) || 0),
- //       y = (parseFloat(target.getAttribute('data-y')) || 0);
- //
- //   // update the element's style
- //   target.style.width  = event.rect.width + 'px';
- //   target.style.height = event.rect.height + 'px';
- //
- //   // translate when resizing from top or left edges
- //   x += event.deltaRect.left;
- //   y += event.deltaRect.top;
- //
- //   target.style.webkitTransform = target.style.transform =
- //       'translate(' + x + 'px,' + y + 'px)';
- //
- //   target.setAttribute('data-x', x);
- //   target.setAttribute('data-y', y);
- //   target.textContent = Math.round(event.rect.width) + '\u00D7' + Math.round(event.rect.height);
- // });
 
-  function dragMoveListener (event) {
-    var target = event.target,
-        // keep the dragged position in the data-x/data-y attributes
-        x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
-        y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
-
-    // translate the element
-    target.style.webkitTransform =
-    target.style.transform =
-      'translate(' + x + 'px, ' + y + 'px)';
-
-    // update the position attributes
-    target.setAttribute('data-x', x);
-    target.setAttribute('data-y', y);
-  }
-
-  // this is used later in the resizing and gesture demos
-  window.dragMoveListener = dragMoveListener;
-
+    // this is used later in the resizing and gesture demos
+    window.dragMoveListener = dragMoveListener;
+}
 //
 
 // const edgeScroll = new EdgeScroll(120, 750)
@@ -108,8 +110,11 @@ class MyExhibitions extends Component {
     super(props)
     this.state = {
       exhibition: 'select',
-      index: -1
+      index: -1,
+      selectedImageID: ''
     }
+    this.interactJS = interactJS.bind(this)
+    this.interactJS()
   }
   updateExhibition(event) {
     const nextExhibition = event.target.value
@@ -118,19 +123,24 @@ class MyExhibitions extends Component {
     })
     this.setState({
       exhibition: nextExhibition,
-      index: newIndex
+      index: newIndex,
+      selectedImageID: ''
     })
   }
   handleRemoveExhibition() {
     this.props.removeExhibition(this.state.exhibition)
     this.setState({
       exhibition: 'select',
-      index: -1
+      index: -1,
+      selectedImageID: ''
+    })
+  }
+  handleImageClick(objectID) {
+    this.setState({
+      selectedImageID: objectID
     })
   }
   render() {
-    console.log(this.props)
-    console.log(this.state)
     return (
       <Section>
         <Container>
@@ -170,15 +180,16 @@ class MyExhibitions extends Component {
                     enable={{top:false, right:false, bottom:true, left:false, topRight:false, bottomRight:false, bottomLeft:false, topLeft:false}}>
             {this.state.index !== -1 ?
             this.props.exhibitions[this.state.index].objects.map((element, index) => {
-              let randLeft = Math.floor(Math.random() * (700 - 50) ) + 50
-              let randTop = Math.floor(Math.random() * (500 - 50) ) + 50
-              let newStyle = {position: 'absolute', left: randLeft, top: randTop}
-              console.log(newStyle)
+              // let randLeft = Math.floor(Math.random() * (700 - 50) ) + 50
+              // let randTop = Math.floor(Math.random() * (400 - 50) ) + 50
+              let newStyle = {position: 'absolute', transform: `translate(${element.x}px, ${element.y}px)`}
+              //
               return (
                 <Image key={index}
                         className="draggable"
                         style={newStyle}
-                        src={element.primaryImageSmall} />
+                        src={element.primaryImageSmall}
+                        onMouseDown={() => this.handleImageClick(element.objectID)}/>
               )
             }) : ''}
           </Resizable>
@@ -194,7 +205,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  removeExhibition: (title) => dispatch({type: 'REMOVE_EXHIBITION', title: title})
+  removeExhibition: (title) => dispatch({type: 'REMOVE_EXHIBITION', title: title}),
+  updateExhibitionImageCoordinates: (exhibition, objectID, x, y) => dispatch({type: 'UPDATE_EXHIBITION_IMAGE_COORDINATES', exhibition: exhibition, objectID: objectID, x: x, y: y})
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(MyExhibitions)
