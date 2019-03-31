@@ -15,18 +15,23 @@ class MyGallery extends Component {
   componentDidMount () {
     this.grid = new MuuriGrid({
       node: this.gridElement,
+      layout: {
+        fillGaps: true
+      },
       defaultOptions: {
-        // dragEnabled: true,
-        // layout: {
-        //   fillGaps: true
-        // },
         layoutOnResize: true
       },
-    });
+    })
+    this.grid.getMethod('refreshItems')
+    this.grid.getMethod('layout')
   }
-  // componentWillUnmount () {
-  //   this.grid.getMethod('destroy');
-  // }
+  componentDidUpdate () {
+    this.grid.getMethod('refreshItems')
+    this.grid.getMethod('layout')
+  }
+  componentWillUnmount () {
+    this.grid.getMethod('destroy');
+  }
   render() {
     return (
       <Section>
