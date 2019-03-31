@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import Discover from '../containers/Discover.js'
 import MyGallery from '../containers/My-Gallery.js'
 import MyExhibitions from '../containers/My-Exhibitions.js'
+import About from './About.js'
 
-import { Section, Container, Level, Icon, Tabs, Heading } from 'react-bulma-components/full'
+import { Section, Container, Level, Tabs, Heading } from 'react-bulma-components/full'
 
 class App extends Component {
   constructor(props) {
@@ -36,19 +37,16 @@ class App extends Component {
           <Container>
             <Level>
               <Level.Side align='left'>
-                {/* <Level.Item>
-                  <Icon color='danger'
-                        style={{paddingBottom: '5px'}}>
-                    <i className="fas fa-2x fa-shapes"></i>
-                  </Icon>
-                </Level.Item> */}
                 <Level.Item>
-                  <Heading size={2}>Met Curator</Heading>
+                  <Heading size={2}>Now On View</Heading>
                 </Level.Item>
               </Level.Side>
               <Level.Side align='right'>
                 <Level.Item>
-                  <a href="#">Login</a>
+                  <About />
+                </Level.Item>
+                <Level.Item>
+                  <div className="clickables">Login</div>
                 </Level.Item>
               </Level.Side>
             </Level>
@@ -62,11 +60,11 @@ class App extends Component {
             </Tabs.Tab>
             <Tabs.Tab className={this.state.isActive === 1 ? 'is-active' : ''}
                       onClick={() => this.openTab('my-gallery')}>
-              My Gallery
+              Gallery
             </Tabs.Tab>
             <Tabs.Tab className={this.state.isActive === 2 ? 'is-active' : ''}
                       onClick={() => this.openTab('my-exhibitions')}>
-              My Exhibitions
+              Exhibitions
             </Tabs.Tab>
           </Tabs>
         </Container>

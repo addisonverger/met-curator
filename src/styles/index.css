@@ -13,7 +13,7 @@ code {
     monospace;
 }
 
-h1 {
+h1, .site-header {
   font-family: 'Germania One', cursive;
 }
 
@@ -48,33 +48,40 @@ h1 {
   object-fit: contain;
 }
 
-.modal-card > .modal-card-foot {
-  /* border: dashed thick white; */
-  /* border: dashed thick blue; */
+.modal-card > .modal-card-foot, .about {
   font-weight: 800;
   font-size: 1.3rem;
   background-color: blue;
   color: white;
 }
 
+.modal-content.about {
+  width: 80vw;
+  padding: 40px;
+  font-size: 1.5rem;
+}
+
+.about u {
+  text-decoration-style: dashed
+}
+
 .modal-card-foot a {
-  /* color: #4a4a4a; */
   color: white;
   text-decoration: underline;
 }
 
 .modal-card-foot a:hover {
-  /* color: #4a4a4a; */
   color: white;
   text-decoration: none;
 }
 
-.level-item a {
+.level-item div.clickables {
   color: #0a0a0a;
   text-decoration: underline;
 }
 
-.level-item a:hover {
+.level-item div.clickables:hover {
+  cursor: pointer;
   color: #0a0a0a;
   text-decoration: none;
 }
