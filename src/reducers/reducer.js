@@ -62,7 +62,9 @@ const reducer = (state = initialState, action) => {
       })
       newGallery.forEach((element) => {
         if (element.isSelected === true) {
-          newExhibitions[selectedIndex].objects.push({objectID: element.data.objectID, primaryImageSmall: element.data.primaryImageSmall, x: 0, y: 0})
+          if (newExhibitions[selectedIndex].objects.find((object) => {return object.objectID === element.data.objectID}) === undefined) {
+            newExhibitions[selectedIndex].objects.push({objectID: element.data.objectID, primaryImageSmall: element.data.primaryImageSmall, x: 0, y: 0})
+          }
           element.isSelected = false
         }
       })
@@ -87,10 +89,12 @@ const reducer = (state = initialState, action) => {
       const exhibitionIndex = newExhibitions.findIndex((exhibition) => {
         return exhibition.title === action.exhibition
       })
+      console.log(newExhibitions[exhibitionIndex])
 
       const objectIndex = newExhibitions[exhibitionIndex].objects.findIndex((object) => {
         return object.objectID === action.objectID
       })
+      console.log(objectIndex)
 
       newExhibitions[exhibitionIndex].objects[objectIndex].x = action.x
       newExhibitions[exhibitionIndex].objects[objectIndex].y = action.y

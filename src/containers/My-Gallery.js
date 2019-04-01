@@ -34,7 +34,7 @@ class MyGallery extends Component {
   }
   render() {
     return (
-      <Section>
+      <Section style={{paddingBottom: '100px'}}>
         <Container>
           <div>
             <div className="grid" ref={gridElement => this.gridElement = gridElement}>
