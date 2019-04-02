@@ -22,11 +22,9 @@ class MyGallery extends Component {
         layoutOnResize: true
       }
     })
-    console.log('didmount')
   }
   componentWillUnmount () {
     this.grid.getMethod('destroy');
-    console.log('didUnmount')
   }
   resize () {
     this.grid.getMethod('layout')

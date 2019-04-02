@@ -91,13 +91,18 @@ const reducer = (state = initialState, action) => {
       })
       console.log(newExhibitions[exhibitionIndex])
 
-      const objectIndex = newExhibitions[exhibitionIndex].objects.findIndex((object) => {
-        return object.objectID === action.objectID
-      })
-      console.log(objectIndex)
+      // if (exhibitionIndex < 0 || exhibitionIndex === undefined) {
+      //   console.log('error:', action.exhibition)
+      //   return {
+      //     ...state
+      //   }
+      // }
 
-      newExhibitions[exhibitionIndex].objects[objectIndex].x = action.x
-      newExhibitions[exhibitionIndex].objects[objectIndex].y = action.y
+      console.log(action.objectIndex)
+
+      newExhibitions[exhibitionIndex].objects[action.objectIndex].x = action.x
+      newExhibitions[exhibitionIndex].objects[action.objectIndex].y = action.y
+
 
       return {
         ...state,

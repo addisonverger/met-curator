@@ -68,9 +68,8 @@ class MyExhibitions extends Component {
               </Level.Item> : ''}
             </Level.Side>
           </Level>
-          <ExhibitionWorkspace exhibitions={this.props.exhibitions}
+          <ExhibitionWorkspace currentExhibition={this.props.exhibitions[this.state.index]}
                                 index={this.state.index}
-                                exhibition={this.state.exhibition}
                                 updateExhibitionImageCoordinates={this.props.updateExhibitionImageCoordinates}/>
         </Container>
       </Section>
@@ -85,7 +84,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   removeExhibition: (title) => dispatch({type: 'REMOVE_EXHIBITION', title: title}),
-  updateExhibitionImageCoordinates: (exhibition, objectID, x, y) => dispatch({type: 'UPDATE_EXHIBITION_IMAGE_COORDINATES', exhibition: exhibition, objectID: objectID, x: x, y: y})
+  updateExhibitionImageCoordinates: (exhibition, objectIndex, x, y) => dispatch({type: 'UPDATE_EXHIBITION_IMAGE_COORDINATES', exhibition: exhibition, objectIndex: objectIndex, x: x, y: y})
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(MyExhibitions)
