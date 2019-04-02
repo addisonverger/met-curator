@@ -45,9 +45,9 @@ class App extends Component {
                 <Level.Item>
                   <About />
                 </Level.Item>
-                <Level.Item>
+                {/* <Level.Item>
                   <div className="clickables">Login</div>
-                </Level.Item>
+                </Level.Item> */}
               </Level.Side>
             </Level>
           </Container>

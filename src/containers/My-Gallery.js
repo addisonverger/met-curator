@@ -20,28 +20,29 @@ class MyGallery extends Component {
       },
       defaultOptions: {
         layoutOnResize: true
-      },
+      }
     })
-    this.grid.getMethod('refreshItems')
-    this.grid.getMethod('layout')
-  }
-  componentDidUpdate () {
-    this.grid.getMethod('refreshItems')
-    this.grid.getMethod('layout')
+    console.log('didmount')
   }
   componentWillUnmount () {
     this.grid.getMethod('destroy');
+    console.log('didUnmount')
+  }
+  resize () {
+    this.grid.getMethod('layout')
+    this.grid.getMethod('refreshItems')
   }
   render() {
     return (
-      <Section style={{paddingBottom: '100px'}}>
+      <Section onLoad={() => this.resize()} style={{paddingBottom: '100px'}}>
         <Container>
           <div>
             <div className="grid" ref={gridElement => this.gridElement = gridElement}>
               {this.props.gallery.map((item, index) => {
                 return (
                   <div className="item"
-                        key={index}>
+                        key={index}
+                        >
                     <div className={item.isSelected ? "item-content selected" : "item-content"}
                         onClick={() => this.props.selectImage(index)}>
                       <Image src={item.data.primaryImage}/>
